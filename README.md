@@ -1,14 +1,9 @@
-# orb-slam-docker
+# README
 
-The purpose of this Docker image is to build and run the ORB SLAM code more easily.
+This Docker doesn't build ORB-SLAM2 itself, but provides the dependencies to build and run it.
 
 Download this Docker image:
 
 ```
-docker pull ghcr.io/lijuno/...
+docker pull ghcr.io/lijuno/orb-slam-docker:ubuntu-20.04
 ```
-
-Get ORB SLAM code
-
-```
-git clone 
