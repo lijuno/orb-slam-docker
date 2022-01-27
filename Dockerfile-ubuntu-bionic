@@ -6,7 +6,7 @@ ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # Use local Ubuntu sources if necessary
-COPY source_mirrors/aliyun_sources_bionic.list /etc/apt/sources.list
+# COPY source_mirrors/aliyun_sources_bionic.list /etc/apt/sources.list
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gnupg dirmngr ca-certificates git wget unzip curl \
