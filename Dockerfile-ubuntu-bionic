@@ -21,7 +21,12 @@ FROM base AS pangolin
 
 RUN git clone --depth 1 --branch v0.5 https://github.com/stevenlovegrove/Pangolin.git
 
-RUN cd Pangolin && mkdir build && cd build &&  cmake .. && make -j && make install
+RUN cd Pangolin && \
+    mkdir build && \
+    cd build && \
+    cmake .. && \
+    make && \
+    make install
 
 
 FROM base AS opencv
@@ -35,7 +40,7 @@ RUN cd opencv-${OPENCV_VERSION} && \
     mkdir build && \
     cd build && \
     cmake -D CMAKE_BUILD_TYPE=Release –D CMAKE_INSTALL_PREFIX=/usr/local .. && \
-    make -j && \
+    make && \
     make install
 
 FROM base AS orb-slam2
