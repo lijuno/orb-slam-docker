@@ -5,5 +5,5 @@ This Docker doesn't build ORB-SLAM2 itself, but provides the dependencies to bui
 Download this Docker image:
 
 ```
-docker pull ghcr.io/lijuno/orb-slam-docker:ubuntu-20.04
+docker pull ghcr.io/lijuno/orb-slam-docker:ubuntu-18.04
 ```
