@@ -11,6 +11,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gnupg dirmngr ca-certificates git wget unzip curl \
     build-essential cmake \
+    libgoogle-glog-dev \
     `# Pangolin deps` libgl1-mesa-dev libwayland-dev libxkbcommon-dev wayland-protocols libegl1-mesa-dev libc++-dev libglew-dev libeigen3-dev \
     `# OpenCV required deps` libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev \
     # `# OpenCV optional deps` python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev \
