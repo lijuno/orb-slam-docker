@@ -43,11 +43,29 @@ RUN cd opencv-${OPENCV_VERSION} && \
     make && \
     make install
 
+
+FROM base AS glog
+
+ENV GLOG_VERSION=0.5.0
+
+RUN curl -L0 https://github.com/google/glog/archive/refs/tags/v${GLOG_VERSION}.zip > ${GLOG_VERSION}.zip && \
+    unzip ${GLOG_VERSION}.zip
+
+RUN cd glog-${GLOG_VERSION} && \
+    mkdir build && \
+    cd build && \
+    cmake -D CMAKE_BUILD_TYPE=Release –D CMAKE_INSTALL_PREFIX=/usr/local .. && \
+    make && \
+    make install
+
+
 FROM base AS orb-slam2
 
 COPY --from=pangolin /usr/local /usr/local
 
 COPY --from=opencv /usr/local /usr/local
+
+COPY --from=glog /usr/local /usr/local
 
 # ENV ROS_MIRROR_URL=http://packages.ros.org/ros/ubuntu
 # ENV ROS_MIRROR_URL=http://mirrors.sjtug.sjtu.edu.cn/ros/ubuntu
