@@ -32,11 +32,20 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
-      - name: Build and push Docker image
+      - name: Build and push ORB-SLAM2 Docker image without ROS
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: .
           file: Dockerfile-ubuntu-bionic
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:ubuntu-18.04
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Build and push ORB-SLAM2 Docker image with ROS
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: .
+          file: Dockerfile-ubuntu-bionic-ros
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:ubuntu-18.04-ros
           labels: ${{ steps.meta.outputs.labels }}
