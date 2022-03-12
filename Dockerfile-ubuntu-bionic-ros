@@ -1,0 +1,19 @@
+FROM ghcr.io/lijuno/orb-slam-docker:ubuntu-18.04
+
+ENV UBUNTU_CODENAME=bionic
+ENV DEBIAN_FRONTEND=nonintercative
+ENV TZ=America/Los_Angeles
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+# Use local Ubuntu sources if necessary
+# COPY source_mirrors/aliyun_sources_bionic.list /etc/apt/sources.list
+
+ENV ROS_MIRROR_URL=http://packages.ros.org/ros/ubuntu
+# ENV ROS_MIRROR_URL=http://mirrors.sjtug.sjtu.edu.cn/ros/ubuntu
+
+RUN echo "deb ${ROS_MIRROR_URL} ${UBUNTU_CODENAME} main" > /etc/apt/sources.list.d/ros-latest.list \
+    && apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ros-melodic-desktop \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
