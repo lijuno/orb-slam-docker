@@ -11,6 +11,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gnupg dirmngr ca-certificates git wget unzip curl \
     build-essential cmake \
+    libssl-dev libboost-serialization-dev \
     `# Pangolin deps` libgl1-mesa-dev libwayland-dev libxkbcommon-dev wayland-protocols libegl1-mesa-dev libc++-dev libglew-dev libeigen3-dev \
     `# OpenCV required deps` libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev \
     # `# OpenCV optional deps` python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev \
@@ -69,11 +70,4 @@ COPY --from=glog /usr/local /usr/local
 
 # ENV ROS_MIRROR_URL=http://packages.ros.org/ros/ubuntu
 # ENV ROS_MIRROR_URL=http://mirrors.sjtug.sjtu.edu.cn/ros/ubuntu
-
-#RUN echo "deb ${ROS_MIRROR_URL} ${UBUNTU_CODENAME} main" > /etc/apt/sources.list.d/ros-latest.list \
-#    && apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
-#
-#RUN apt-get update && apt-get install -y --no-install-recommends \
-#    ros-melodic-desktop \
-#    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
