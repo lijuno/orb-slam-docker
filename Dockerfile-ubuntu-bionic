@@ -32,7 +32,7 @@ RUN cd Pangolin && \
 
 FROM base AS opencv
 
-ENV OPENCV_VERSION=3.4.16
+ENV OPENCV_VERSION=4.5.5
 
 RUN curl -L0 https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip > ${OPENCV_VERSION}.zip && \
     unzip ${OPENCV_VERSION}.zip
