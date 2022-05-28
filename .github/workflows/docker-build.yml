@@ -40,5 +40,5 @@ jobs:
           context: .
           file: Dockerfile-ubuntu-bionic
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:ubuntu-18.04
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:ubuntu-18.04_opencv-3.x
           labels: ${{ steps.meta.outputs.labels }}
