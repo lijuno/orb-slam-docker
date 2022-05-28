@@ -1,4 +1,4 @@
-FROM ghcr.io/lijuno/orb-slam-docker:ubuntu-18.04
+FROM ghcr.io/lijuno/orb-slam-docker:ubuntu-18.04_opencv-4.x
 
 ENV UBUNTU_CODENAME=bionic
 ENV DEBIAN_FRONTEND=nonintercative

@@ -2,7 +2,7 @@ name: Create and publish Docker image for ORB-SLAM2 with ROS
 
 on:
   push:
-    branches: ['master']
+    branches: ['opencv-4.x']
 
 env:
   REGISTRY: ghcr.io
@@ -38,5 +38,5 @@ jobs:
           context: .
           file: Dockerfile-ubuntu-bionic-ros
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:ubuntu-18.04-ros
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:ubuntu-18.04-ros_opencv-4.x
           labels: ${{ steps.meta.outputs.labels }}
